@@ -951,6 +951,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1380884942 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1762519202, guid: 17c22297150cd7146b1d16bf5cc4f929, type: 3}
+  m_PrefabInstance: {fileID: 48240664369239269}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1515533612
 GameObject:
   m_ObjectHideFlags: 0
@@ -1173,6 +1184,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1644050}
   currentScore: 0
+--- !u!114 &1934245739 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1934245739, guid: 17c22297150cd7146b1d16bf5cc4f929, type: 3}
+  m_PrefabInstance: {fileID: 48240664369239269}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1959080805
 GameObject:
   m_ObjectHideFlags: 0
@@ -1216,7 +1238,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 48240664082789252, guid: 17c22297150cd7146b1d16bf5cc4f929, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 40
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 48240664082789252, guid: 17c22297150cd7146b1d16bf5cc4f929, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1224,7 +1246,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 48240664082789252, guid: 17c22297150cd7146b1d16bf5cc4f929, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 20
+      value: 5.6
       objectReference: {fileID: 0}
     - target: {fileID: 48240664082789252, guid: 17c22297150cd7146b1d16bf5cc4f929, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1258,9 +1280,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 7085794638484413702, guid: 17c22297150cd7146b1d16bf5cc4f929, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 7128734912085960403, guid: 17c22297150cd7146b1d16bf5cc4f929, type: 3}
+      propertyPath: bar
+      value: 
+      objectReference: {fileID: 1380884942}
+    - target: {fileID: 7128734912085960403, guid: 17c22297150cd7146b1d16bf5cc4f929, type: 3}
+      propertyPath: eatingBar
+      value: 
+      objectReference: {fileID: 1934245739}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17c22297150cd7146b1d16bf5cc4f929, type: 3}
