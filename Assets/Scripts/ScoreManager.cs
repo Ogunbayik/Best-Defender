@@ -7,6 +7,7 @@ public class ScoreManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI scoreText;
 
+    [HideInInspector]
     public int currentScore;
     void Start()
     {

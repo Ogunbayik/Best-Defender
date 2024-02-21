@@ -411,8 +411,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c273bd42fc4624999acd5de6ccfe8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementSpeed: 2
+  bulletSpeed: 3
   bulletPrefab: {fileID: 7003767205965721846, guid: 8acfb056c5f79a64d93b32f2a11fd13d, type: 3}
   attackPosition: {fileID: 48240663975245767}
+  attackDistance: 10
+  maxAttackTimer: 3
+  maxScore: 10
+  minScore: 5
+  maxNumberOfEating: 3
 --- !u!114 &7128734912085960403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -425,8 +432,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 976f6591d0c31cb41a440c7f98f22a85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bar: {fileID: 0}
-  eatingBar: {fileID: 0}
+  bar: {fileID: 1762519202}
+  eatingBar: {fileID: 1934245739}
   maxFillAmount: 1
   decreaseSpeed: 0.1
 --- !u!65 &7085794638484413702

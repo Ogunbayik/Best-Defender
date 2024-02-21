@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    [Header("Spawn Settings")]
     [SerializeField] private Transform enemyPrefab;
     [SerializeField] private float startSpawnTimer;
     [SerializeField] private float maxSpawnTimer;
@@ -22,7 +23,12 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(spawnTimer <= 0)
+        SpawnEnemy();
+    }
+
+    private void SpawnEnemy()
+    {
+        if (spawnTimer <= 0)
         {
             randomTimer = Random.Range(minSpawnTimer, maxSpawnTimer);
             spawnTimer = randomTimer;
