@@ -22,6 +22,7 @@ public class Enemy : MonoBehaviour
     private States currentState;
 
     [Header("Movement Settings")]
+    [SerializeField] private Transform body;
     [SerializeField] private float movementSpeed;
     [SerializeField] private float bulletSpeed;
     [Header("Attack Settings")]
@@ -40,6 +41,7 @@ public class Enemy : MonoBehaviour
 
     private float currentSpeed;
     private float attackTimer;
+    private float lookOffsetY;
 
     private Transform castle;
 
@@ -52,6 +54,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+        lookOffsetY = transform.localScale.y / 2;
         castle = FindObjectOfType<Castle>().transform;
         scoreManager = FindObjectOfType<ScoreManager>();
         currentState = States.Chase;
@@ -112,7 +115,8 @@ public class Enemy : MonoBehaviour
             scoreManager.AddScore(enemyScore);
         }
 
-        transform.LookAt(castle.position);
+        var desiredLookY = new Vector3(0f, lookOffsetY, 0f);
+        body.transform.LookAt(castle.position + desiredLookY);
 
         if (attackTimer <= 0)
         {

@@ -40,6 +40,7 @@ public class EnemyUI : MonoBehaviour
     {
         if (isEating)
         {
+
             eatingBar.fillAmount -= Time.deltaTime * decreaseSpeed;
 
             if (eatingBar.fillAmount <= 0)
