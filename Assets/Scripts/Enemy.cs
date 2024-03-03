@@ -94,6 +94,9 @@ public class Enemy : MonoBehaviour
     {
         if (numberOfEating >= maxNumberOfEating)
         {
+            var happy = enemyUI.GetHappySprite();
+            enemyUI.DoImageActivate(true, happy);
+
             currentState = States.GoingBack;
             scoreManager.AddScore(enemyScore);
         }
