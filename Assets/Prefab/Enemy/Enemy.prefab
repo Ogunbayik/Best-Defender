@@ -439,8 +439,8 @@ MonoBehaviour:
   eatingBar: {fileID: 1934245739}
   maxFillAmount: 1
   decreaseSpeed: 0.1
-  eatingSprite: {fileID: 0}
-  happySprite: {fileID: 0}
+  eatingSprite: {fileID: 21300000, guid: e52c75d02a843b145a591fc28cd62c8a, type: 3}
+  happySprite: {fileID: 21300000, guid: 1f437103fe1478e44a128082e94a111a, type: 3}
 --- !u!65 &7085794638484413702
 BoxCollider:
   m_ObjectHideFlags: 0
