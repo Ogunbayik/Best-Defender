@@ -9,6 +9,9 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private float startSpawnTimer;
     [SerializeField] private float maxSpawnTimer;
     [SerializeField] private float minSpawnTimer;
+    [SerializeField] private float spawnPositionX;
+    [SerializeField] private float maximumBorderZ;
+    [SerializeField] private float minimumBorderZ;
 
     private Vector3 randomSpawnPosition;
 
@@ -44,15 +47,15 @@ public class SpawnManager : MonoBehaviour
     {
         var enemy = Instantiate(enemyPrefab);
         enemy.transform.position = RandomSpawnPosition();
+        enemy.transform.rotation = Quaternion.Euler(0f, -90f, 0f);
     }
 
     private Vector3 RandomSpawnPosition()
     {
-        var positionX = 40f;
         var positionY = 0f;
-        var randomZ = Random.Range(15, 25);
+        var randomZ = Random.Range(minimumBorderZ, maximumBorderZ);
 
-        randomSpawnPosition = new Vector3(positionX, positionY, randomZ);
+        randomSpawnPosition = new Vector3(spawnPositionX, positionY, randomZ);
         return randomSpawnPosition;
     }
 }

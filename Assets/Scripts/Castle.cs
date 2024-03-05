@@ -13,7 +13,7 @@ public class Castle : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        var enemyBullet = other.gameObject.GetComponent<Bullet>();
+        var enemyBullet = other.gameObject.GetComponent<MovePrefab>();
         var bulletDamage = 50;
 
         if (enemyBullet)

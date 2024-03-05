@@ -22,11 +22,11 @@ public class Enemy : MonoBehaviour
     private States currentState;
 
     [Header("Movement Settings")]
-    [SerializeField] private Transform body;
+    [SerializeField] private Transform allParts;
     [SerializeField] private float movementSpeed;
-    [SerializeField] private float bulletSpeed;
+    [SerializeField] private float axeSpeed;
     [Header("Attack Settings")]
-    [SerializeField] private Transform bulletPrefab;
+    [SerializeField] private Transform axePrefab;
     [SerializeField] private Transform attackPosition;
     [SerializeField] private float attackDistance;
     [SerializeField] private float maxAttackTimer;
@@ -46,16 +46,18 @@ public class Enemy : MonoBehaviour
     private Transform castle;
 
     private Vector3 outSidePoint;
+    private Vector3 movePosition;
     private void Awake()
     {
         enemyUI = GetComponent<EnemyUI>();
-        boxCollider = GetComponent<BoxCollider>();
+        boxCollider = GetComponentInChildren<BoxCollider>();
     }
 
     void Start()
     {
         lookOffsetY = transform.localScale.y / 2;
         castle = FindObjectOfType<Castle>().transform;
+        movePosition = new Vector3(castle.position.x, castle.position.y, transform.position.z);
         scoreManager = FindObjectOfType<ScoreManager>();
         currentState = States.Chase;
         currentSpeed = movementSpeed;
@@ -103,7 +105,9 @@ public class Enemy : MonoBehaviour
 
         boxCollider.enabled = true;
 
-        transform.position = Vector3.MoveTowards(transform.position, castle.position, currentSpeed * Time.deltaTime);
+
+        
+        transform.position = Vector3.MoveTowards(transform.position, movePosition, currentSpeed * Time.deltaTime);
         var distanceBetweenCastle = Vector3.Distance(transform.position, castle.position);
         if (distanceBetweenCastle <= attackDistance)
             currentState = States.Attack;
@@ -119,14 +123,14 @@ public class Enemy : MonoBehaviour
         }
 
         var desiredLookY = new Vector3(0f, lookOffsetY, 0f);
-        body.transform.LookAt(castle.position + desiredLookY);
+        allParts.transform.LookAt(castle.position + desiredLookY);
 
         if (attackTimer <= 0)
         {
-            var bullet = Instantiate(bulletPrefab);
-            bullet.transform.position = attackPosition.position;
+            var axe = Instantiate(axePrefab);
+            axe.transform.position = attackPosition.position;
             var movementDirection = castle.position - transform.position;
-            bullet.GetComponent<Bullet>().SetBulletMovement(movementDirection, bulletSpeed);
+            axe.GetComponent<MovePrefab>().SetPrefabMovement(movementDirection, axeSpeed);
             attackTimer = maxAttackTimer;
         }
         else
@@ -147,13 +151,13 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        var bullet = other.gameObject.GetComponent<Bullet>();
+        var axe = other.gameObject.GetComponent<MovePrefab>();
 
-        if (bullet)
+        if (axe)
         {
             currentState = States.Eating;
             OnHit?.Invoke(this, EventArgs.Empty);
-            Destroy(bullet.gameObject);
+            Destroy(axe.gameObject);
         }
     }
 

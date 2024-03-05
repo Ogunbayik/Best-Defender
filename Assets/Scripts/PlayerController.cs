@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
         var bullet = Instantiate(bulletPrefab);
         var bulletDirection = Vector3.forward;
         bullet.transform.position = attackPoint.position;
-        bullet.GetComponent<Bullet>().SetBulletMovement(bulletDirection ,bulletSpeed);
+        bullet.GetComponent<MovePrefab>().SetPrefabMovement(bulletDirection ,bulletSpeed);
     }
     #endregion
 

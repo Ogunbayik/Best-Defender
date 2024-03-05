@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class MovePrefab : MonoBehaviour
 {
     private float movementSpeed;
 
@@ -10,10 +10,10 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
-        SetBulletMovement(movementDirection, movementSpeed);
+        SetPrefabMovement(movementDirection, movementSpeed);
     }
 
-    public void SetBulletMovement(Vector3 direction, float speed)
+    public void SetPrefabMovement(Vector3 direction, float speed)
     {
         movementDirection = direction;
         movementSpeed = speed;
