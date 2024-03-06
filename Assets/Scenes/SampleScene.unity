@@ -705,7 +705,7 @@ MonoBehaviour:
   startSpawnTimer: 1
   maxSpawnTimer: 15
   minSpawnTimer: 10
-  spawnPositionX: 5
+  spawnPositionX: 10
   maximumBorderZ: 30
   minimumBorderZ: 10
 --- !u!4 &832832001

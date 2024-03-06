@@ -9,6 +9,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private float startSpawnTimer;
     [SerializeField] private float maxSpawnTimer;
     [SerializeField] private float minSpawnTimer;
+    [Header("Position Settings")]
     [SerializeField] private float spawnPositionX;
     [SerializeField] private float maximumBorderZ;
     [SerializeField] private float minimumBorderZ;

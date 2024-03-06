@@ -7,7 +7,6 @@ public class Enemy : MonoBehaviour
 {
     public event EventHandler OnHit;
 
-    private ScoreManager scoreManager;
     private BoxCollider boxCollider;
     private EnemyUI enemyUI;
 
@@ -28,8 +27,10 @@ public class Enemy : MonoBehaviour
     [Header("Attack Settings")]
     [SerializeField] private Transform axePrefab;
     [SerializeField] private Transform attackPosition;
-    [SerializeField] private float attackDistance;
+    [SerializeField] private float maxAttackDistance;
+    [SerializeField] private float minAttackDistance;
     [SerializeField] private float maxAttackTimer;
+    
     [Header("Score Settings")]
     [SerializeField] private int maxScore;
     [SerializeField] private int minScore;
@@ -39,6 +40,7 @@ public class Enemy : MonoBehaviour
     private int enemyScore;
     private int numberOfEating = 0;
 
+    private float attackDistance;
     private float currentSpeed;
     private float attackTimer;
     private float lookOffsetY;
@@ -50,17 +52,22 @@ public class Enemy : MonoBehaviour
     private void Awake()
     {
         enemyUI = GetComponent<EnemyUI>();
-        boxCollider = GetComponentInChildren<BoxCollider>();
+        boxCollider = GetComponent<BoxCollider>();
     }
 
     void Start()
     {
+        InitiliazeSettings();
+    }
+
+    private void InitiliazeSettings()
+    {
         lookOffsetY = transform.localScale.y / 2;
         castle = FindObjectOfType<Castle>().transform;
         movePosition = new Vector3(castle.position.x, castle.position.y, transform.position.z);
-        scoreManager = FindObjectOfType<ScoreManager>();
         currentState = States.Chase;
         currentSpeed = movementSpeed;
+        attackDistance = UnityEngine.Random.Range(minAttackDistance, maxAttackDistance);
 
         enemyScore = UnityEngine.Random.Range(minScore, maxScore);
         enemyUI.OnGettingFull += EnemyUI_OnGettingFull;
@@ -76,7 +83,12 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        switch(currentState)
+        HandleStates();
+    }
+
+    private void HandleStates()
+    {
+        switch (currentState)
         {
             case States.Chase:
                 Chasing();
@@ -92,6 +104,7 @@ public class Enemy : MonoBehaviour
                 break;
         }
     }
+
     private void Chasing()
     {
         if (numberOfEating >= maxNumberOfEating)
@@ -100,12 +113,10 @@ public class Enemy : MonoBehaviour
             enemyUI.DoImageActivate(true, happy);
 
             currentState = States.GoingBack;
-            scoreManager.AddScore(enemyScore);
+            ScoreManager.instance.AddScore(enemyScore);
         }
 
         boxCollider.enabled = true;
-
-
         
         transform.position = Vector3.MoveTowards(transform.position, movePosition, currentSpeed * Time.deltaTime);
         var distanceBetweenCastle = Vector3.Distance(transform.position, castle.position);
@@ -119,7 +130,7 @@ public class Enemy : MonoBehaviour
         if (numberOfEating >= maxNumberOfEating)
         {
             currentState = States.GoingBack;
-            scoreManager.AddScore(enemyScore);
+            ScoreManager.instance.AddScore(enemyScore);
         }
 
         var desiredLookY = new Vector3(0f, lookOffsetY, 0f);
@@ -151,13 +162,13 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        var axe = other.gameObject.GetComponent<MovePrefab>();
+        var playerBullet = other.gameObject.GetComponent<PlayerBullet>();
 
-        if (axe)
+        if (playerBullet)
         {
             currentState = States.Eating;
             OnHit?.Invoke(this, EventArgs.Empty);
-            Destroy(axe.gameObject);
+            Destroy(playerBullet.gameObject);
         }
     }
 

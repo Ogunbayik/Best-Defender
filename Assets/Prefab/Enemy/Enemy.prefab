@@ -41,7 +41,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2870827957064594708}
   - component: {fileID: 5286444281673603182}
-  - component: {fileID: 1264494489977652996}
   m_Layer: 0
   m_Name: AngryLog
   m_TagString: Untagged
@@ -85,19 +84,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!65 &1264494489977652996
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1264494489977652999}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.8353684, y: 1.8882025, z: 1.684194}
-  m_Center: {x: -0.10166526, y: -0.25594813, z: 0.05366397}
 --- !u!1 &1799651101388851612
 GameObject:
   m_ObjectHideFlags: 0
@@ -5516,18 +5502,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5993272228455379205}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0.649}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5993272229328191108}
   - {fileID: 5993272228722163044}
   m_Father: {fileID: 5993272228863720893}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -1.66, y: 1.1}
+  m_AnchoredPosition: {x: -0.86, y: 1.257}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &5993272228455379225
@@ -5677,6 +5663,8 @@ GameObject:
   - component: {fileID: 5993272228863720893}
   - component: {fileID: 5993272228863720882}
   - component: {fileID: 5993272228863720883}
+  - component: {fileID: 7494183668947382608}
+  - component: {fileID: 8101524825590134306}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -5717,7 +5705,8 @@ MonoBehaviour:
   axeSpeed: 0.5
   axePrefab: {fileID: 3033776636470255257, guid: 95895f8d1a1b93149a20b10a98f5afcb, type: 3}
   attackPosition: {fileID: 5993272229297298422}
-  attackDistance: 25
+  maxAttackDistance: 10
+  minAttackDistance: 7
   maxAttackTimer: 4
   maxScore: 10
   minScore: 5
@@ -5741,6 +5730,35 @@ MonoBehaviour:
   decreaseSpeed: 0.1
   eatingSprite: {fileID: 21300000, guid: e52c75d02a843b145a591fc28cd62c8a, type: 3}
   happySprite: {fileID: 21300000, guid: 1f437103fe1478e44a128082e94a111a, type: 3}
+--- !u!65 &7494183668947382608
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5993272228863720892}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.8353684, y: 1.8882025, z: 1.684194}
+  m_Center: {x: -1.1, y: 1, z: 0.1}
+--- !u!54 &8101524825590134306
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5993272228863720892}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &5993272229161592499
 GameObject:
   m_ObjectHideFlags: 0
