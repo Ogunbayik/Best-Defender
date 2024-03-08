@@ -5706,7 +5706,7 @@ MonoBehaviour:
   axePrefab: {fileID: 3033776636470255257, guid: 95895f8d1a1b93149a20b10a98f5afcb, type: 3}
   attackPosition: {fileID: 5993272229297298422}
   maxAttackDistance: 10
-  minAttackDistance: 7
+  minAttackDistance: 8
   maxAttackTimer: 4
   maxScore: 10
   minScore: 5

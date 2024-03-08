@@ -157,12 +157,13 @@ public class Enemy : MonoBehaviour
     private void GoingBack()
     {
         boxCollider.enabled = false;
+        transform.LookAt(outSidePoint);
         transform.position = Vector3.MoveTowards(transform.position, outSidePoint, currentSpeed * Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        var playerBullet = other.gameObject.GetComponent<PlayerBullet>();
+        var playerBullet = other.gameObject.GetComponent<PlayerLogBoat>();
 
         if (playerBullet)
         {

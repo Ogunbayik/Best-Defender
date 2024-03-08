@@ -11,8 +11,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float xRange;
     [Header("Attack Settings")]
     [SerializeField] private Transform attackPoint;
-    [SerializeField] private Transform bulletPrefab;
-    [SerializeField] private float bulletSpeed;
+    [SerializeField] private Transform logBoatPrefab;
+    [SerializeField] private float logSpeed;
     [SerializeField] private float maxAttackTimer;
 
     private Vector3 movementDirection;
@@ -61,10 +61,10 @@ public class PlayerController : MonoBehaviour
 
     private void CreateBullet()
     {
-        var bullet = Instantiate(bulletPrefab);
-        var bulletDirection = Vector3.forward;
-        bullet.transform.position = attackPoint.position;
-        bullet.GetComponent<MovePrefab>().SetPrefabMovement(bulletDirection ,bulletSpeed);
+        var logBoat = Instantiate(logBoatPrefab);
+        var boatDirection = Vector3.forward;
+        logBoat.transform.position = attackPoint.position;
+        logBoat.GetComponent<MovePrefab>().SetPrefabMovement(boatDirection ,logSpeed);
     }
     #endregion
 
