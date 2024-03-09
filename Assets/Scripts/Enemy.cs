@@ -45,7 +45,7 @@ public class Enemy : MonoBehaviour
     private float attackTimer;
     private float lookOffsetY;
 
-    private Transform castle;
+    private Transform slimeGround;
 
     private Vector3 outSidePoint;
     private Vector3 movePosition;
@@ -63,8 +63,8 @@ public class Enemy : MonoBehaviour
     private void InitiliazeSettings()
     {
         lookOffsetY = transform.localScale.y / 2;
-        castle = FindObjectOfType<Castle>().transform;
-        movePosition = new Vector3(castle.position.x, castle.position.y, transform.position.z);
+        slimeGround = FindObjectOfType<SlimeGround>().transform;
+        movePosition = new Vector3(slimeGround.position.x, slimeGround.position.y, transform.position.z);
         currentState = States.Chase;
         currentSpeed = movementSpeed;
         attackDistance = UnityEngine.Random.Range(minAttackDistance, maxAttackDistance);
@@ -119,7 +119,7 @@ public class Enemy : MonoBehaviour
         boxCollider.enabled = true;
         
         transform.position = Vector3.MoveTowards(transform.position, movePosition, currentSpeed * Time.deltaTime);
-        var distanceBetweenCastle = Vector3.Distance(transform.position, castle.position);
+        var distanceBetweenCastle = Vector3.Distance(transform.position, slimeGround.position);
         if (distanceBetweenCastle <= attackDistance)
             currentState = States.Attack;
 
@@ -134,13 +134,13 @@ public class Enemy : MonoBehaviour
         }
 
         var desiredLookY = new Vector3(0f, lookOffsetY, 0f);
-        allParts.transform.LookAt(castle.position + desiredLookY);
+        allParts.transform.LookAt(slimeGround.position + desiredLookY);
 
         if (attackTimer <= 0)
         {
             var axe = Instantiate(axePrefab);
             axe.transform.position = attackPosition.position;
-            var movementDirection = castle.position - transform.position;
+            var movementDirection = slimeGround.position - transform.position;
             axe.GetComponent<MovePrefab>().SetPrefabMovement(movementDirection, axeSpeed);
             attackTimer = maxAttackTimer;
         }

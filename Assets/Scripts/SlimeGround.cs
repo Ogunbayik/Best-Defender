@@ -2,14 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Castle : MonoBehaviour
+public class SlimeGround : MonoBehaviour
 {
     [SerializeField] private int maxHealth;
+    [SerializeField] private GameObject[] allColumns;
 
     private int currentHealth;
     void Start()
     {
         currentHealth = maxHealth;
+
+        for (int i = 0; i < allColumns.Length; i++)
+        {
+            allColumns[i].SetActive(true);
+        }
+    }
+
+    private void Update()
+    {
+        
     }
     private void OnTriggerEnter(Collider other)
     {
