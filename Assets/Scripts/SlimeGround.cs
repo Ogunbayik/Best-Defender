@@ -7,47 +7,18 @@ public class SlimeGround : MonoBehaviour
     [SerializeField] private GameObject ground;
     [SerializeField] private float collapseSpeed;
 
+    private Column currentColumn;
     private int currentHealth;
     private int lastColumnIndex;
     void Start()
     {
+        currentColumn = null;
         currentHealth = maxHealth;
         lastColumnIndex = allColumns.Length - 1;
 
         for (int i = 0; i < allColumns.Length; i++)
         {
             allColumns[i].SetActive(true);
-        }
-    }
-
-    private void Update()
-    {
-        SetColumnActivate();
-
-    }
-
-    private void SetColumnActivate()
-    {
-        if (currentHealth < 100 && 80 <= currentHealth)
-        {
-            allColumns[lastColumnIndex].GetComponent<Column>().DestroyColumn();
-        }
-        else if (currentHealth < 80 && 60 <= currentHealth)
-        {
-            allColumns[lastColumnIndex - 1].GetComponent<Column>().DestroyColumn();
-        }
-        else if (currentHealth < 60 && 40 <= currentHealth)
-        {
-            allColumns[lastColumnIndex - 2].GetComponent<Column>().DestroyColumn();
-        }
-        else if (currentHealth < 40 && 20 <= currentHealth)
-        {
-            allColumns[lastColumnIndex - 3].GetComponent<Column>().DestroyColumn();
-        }
-        else if (currentHealth <= 0)
-        {
-            allColumns[lastColumnIndex - 4].GetComponent<Column>().DestroyColumn();
-            CollapseTheFloor();
         }
     }
 
@@ -59,15 +30,46 @@ public class SlimeGround : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         var axe = other.gameObject.GetComponent<Axe>();
+        var obj = axe.gameObject.GetComponentInParent<MovePrefab>();
         var axeDamage = 10;
 
         if (axe)
         {
             DecreaseHealth(axeDamage);
-            Destroy(axe.gameObject);
 
-            if (currentHealth <= 0)
-                DestructionCastle();
+            Destroy(obj.gameObject);
+
+            SetColumnActivate();
+        }
+    }
+    private void SetColumnActivate()
+    {
+        if (currentHealth < 100 && 80 <= currentHealth)
+        {
+            currentColumn = allColumns[lastColumnIndex].GetComponent<Column>();
+            currentColumn.Destroyed();
+        }
+        else if (currentHealth < 80 && 60 <= currentHealth)
+        {
+            currentColumn = allColumns[lastColumnIndex - 1].GetComponent<Column>();
+            currentColumn.DestroyColumn();
+        }
+        else if (currentHealth < 60 && 40 <= currentHealth)
+        {
+            currentColumn = allColumns[lastColumnIndex - 2].GetComponent<Column>();
+            currentColumn.DestroyColumn();
+        }
+        else if (currentHealth < 40 && 20 <= currentHealth)
+        {
+            currentColumn = allColumns[lastColumnIndex - 3].GetComponent<Column>();
+            currentColumn.DestroyColumn();
+        }
+        else if (currentHealth <= 0)
+        {
+            currentColumn = allColumns[lastColumnIndex - 4].GetComponent<Column>();
+            currentColumn.DestroyColumn();
+
+            CollapseTheFloor();
         }
     }
     private void DecreaseHealth(int health)
