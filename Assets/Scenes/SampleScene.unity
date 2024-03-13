@@ -2029,6 +2029,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cda2db715c61e14f9f875a26af50d16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  offsetPosition: {x: -2.5, y: 0, z: 2.5}
   smokeParticle: {fileID: 3626500675605585168, guid: 89bd820f71119334e912389df3163966, type: 3}
 --- !u!4 &303277804485832447
 Transform:
@@ -2092,6 +2093,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cda2db715c61e14f9f875a26af50d16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  offsetPosition: {x: 0, y: 0, z: 0}
   smokeParticle: {fileID: 3626500675605585168, guid: 89bd820f71119334e912389df3163966, type: 3}
 --- !u!4 &602983776517414233
 Transform:
@@ -2548,7 +2550,7 @@ Transform:
   m_GameObject: {fileID: 7781574478998279335}
   m_LocalRotation: {x: -0.7071069, y: -0, z: -0, w: 0.70710677}
   m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalScale: {x: 100.00007, y: 100.00009, z: 100.00007}
   m_Children: []
   m_Father: {fileID: 7339358031209686003}
   m_RootOrder: 4
@@ -2784,6 +2786,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cda2db715c61e14f9f875a26af50d16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  offsetPosition: {x: 2.5, y: 0, z: -2.5}
   smokeParticle: {fileID: 3626500675605585168, guid: 89bd820f71119334e912389df3163966, type: 3}
 --- !u!23 &7707199061215121045
 MeshRenderer:
@@ -2857,6 +2860,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cda2db715c61e14f9f875a26af50d16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  offsetPosition: {x: -2.5, y: 0, z: -2.5}
   smokeParticle: {fileID: 3626500675605585168, guid: 89bd820f71119334e912389df3163966, type: 3}
 --- !u!1 &7967276290776086857
 GameObject:
@@ -3081,6 +3085,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cda2db715c61e14f9f875a26af50d16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  offsetPosition: {x: 2.5, y: 0, z: 2.5}
   smokeParticle: {fileID: 3626500675605585168, guid: 89bd820f71119334e912389df3163966, type: 3}
 --- !u!23 &9045432237002927633
 MeshRenderer:

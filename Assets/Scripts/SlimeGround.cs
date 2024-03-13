@@ -17,7 +17,7 @@ public class SlimeGround : MonoBehaviour
         lastColumnIndex = allColumns.Length - 1;
         currentColumn = allColumns[lastColumnIndex].GetComponent<Column>();
 
-        Debug.Log(currentColumn.transform.position);
+        Debug.Log(currentColumn.transform.localPosition);
 
         for (int i = 0; i < allColumns.Length; i++)
         {
