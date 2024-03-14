@@ -34,6 +34,7 @@ public class Enemy : MonoBehaviour
     [Header("Score Settings")]
     [SerializeField] private int maxScore;
     [SerializeField] private int minScore;
+    [SerializeField] private Transform gemPrefab;
     [Header("Eat Settings")]
     [SerializeField] private int maxNumberOfEating;
 
@@ -156,6 +157,9 @@ public class Enemy : MonoBehaviour
 
     private void GoingBack()
     {
+        var gem = Instantiate(gemPrefab);
+        gem.transform.position = transform.position;
+
         boxCollider.enabled = false;
         transform.LookAt(outSidePoint);
         transform.position = Vector3.MoveTowards(transform.position, outSidePoint, currentSpeed * Time.deltaTime);

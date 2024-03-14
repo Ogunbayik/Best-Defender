@@ -5710,6 +5710,7 @@ MonoBehaviour:
   maxAttackTimer: 4
   maxScore: 10
   minScore: 5
+  gemPrefab: {fileID: 1224250745605736473, guid: 05acf7cc7370db547b697acbaeb20857, type: 3}
   maxNumberOfEating: 3
 --- !u!114 &5993272228863720883
 MonoBehaviour:
